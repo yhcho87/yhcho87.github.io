@@ -3,8 +3,7 @@
     "tutorials": [
         {
             "title": "Deploying Jenkins HOL!",
-            "description": "This is the landing page for the oracle/learning-library repo",
-            "filename": "Deploying_Jenkins/Deploying_Jenkins_HOL.md"
+            "filename": "labs/Deploying_Jenkins/Deploying_Jenkins_HOL.md"
         }
     ]
 }
