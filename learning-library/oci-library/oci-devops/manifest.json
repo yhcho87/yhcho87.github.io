@@ -2,7 +2,15 @@
     "workshoptitle": "LiveLabs on GitHub",
     "tutorials": [
         {
-            "title": "Deploying Jenkins HOL!",
+            "title": "Deploying Jenkins HOL! - 1",
+            "filename": "labs/Deploying_Jenkins/Deploying_Jenkins_HOL.md"
+        },
+        {
+            "title": "Deploying Jenkins HOL! - 2",
+            "filename": "labs/Deploying_Jenkins/Deploying_Jenkins_HOL.md"
+        },
+        {
+            "title": "Deploying Jenkins HOL! - 3",
             "filename": "labs/Deploying_Jenkins/Deploying_Jenkins_HOL.md"
         }
     ]
