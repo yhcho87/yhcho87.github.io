@@ -2,7 +2,8 @@
 
 ## 소개
 
-실습을 위한 Oracle 클라우드 환경을 구성합니다. 우선 OCI내의 특정 구획 (Comartment)이 생성될 것이며, 해당 구획내에 가상 클라우드 네트워크 (VCN)가 구성됩니다. 여기서 구획과 VCN은 저체 환경을 격리하고 보호하는 역할을 합니다. 마지막으로 Kubernetes 클러스터 구성을 위해 Oracle Cloud Infrastructure Container Engine(OKE)를 구성합니다.
+실습을 위한 Oracle 클라우드 환경을 구성합니다. 우선 OCI내의 특정 구획 (Comartment)이 생성될 것이며, 해당 구획내에 가상 클라우드 네트워크 (VCN)가 구성됩니다. 여기서 구획과 VCN은 저체 환경을 격리하고 보호하는 역할을 합니다. 
+그리고 빌드된 결과물을 배포할 Compute Instance (Instance Pool)과 Kubernetes 클러스터 구성을 위해 Oracle Cloud Infrastructure Container Engine(OKE)를 구성합니다.
 
 소요시간: 20 minutes
 
@@ -14,6 +15,7 @@
 
 1. 실습을 위한 노트북 (Windows, MacOS)
 1. Oracle Free Tier 계정
+1. Github 계정
 
 ## Task 1: OCI Console 로그인
 
