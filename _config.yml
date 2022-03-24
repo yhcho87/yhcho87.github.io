@@ -14,6 +14,7 @@ author: Hwan
 # --- List of links in the navigation bar --- #
 
 navbar-links:
+  Learning: "learning"
   #About Me: "aboutme"
   #Resources:
   #  - Beautiful Jekyll: "https://beautifuljekyll.com"
