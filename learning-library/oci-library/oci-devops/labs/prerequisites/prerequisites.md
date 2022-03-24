@@ -4,6 +4,7 @@
 
 실습을 위한 Oracle 클라우드 환경을 구성합니다. 우선 OCI내의 특정 구획 (Comartment)이 생성될 것이며, 해당 구획내에 가상 클라우드 네트워크 (VCN)가 구성됩니다. 여기서 구획과 VCN은 저체 환경을 격리하고 보호하는 역할을 합니다. 
 그리고 빌드된 결과물을 배포할 Compute Instance (Instance Pool)과 Kubernetes 클러스터 구성을 위해 Oracle Cloud Infrastructure Container Engine(OKE)를 구성합니다.
+GitHub 계정이 없는 경우 
 
 소요시간: 20 minutes
 
@@ -42,6 +43,57 @@
    ![Compartment Screen](images/compartmentScreen.png " ")
 
 1. 다음과 같이 입력:
+      - Name: Enter **OCIDevOpsHandsOn**
+      - Description: **OCI DevOps 실습 구획**
+      - Parent Compartment: 부모 구획으로 기본 선택되는 root 구획 선택
+      - **Create Compartment** 클릭
+  
+  ![CloudNativeHandsOn Compartment](images/compartment-create-ko.png " ")
+
+1. 좌측 상단의 **햄버거 아이콘**을 클릭하고, **Networking**을 선택한 후 **Virtual Cloud Networks**를 클릭합니다.
+//진변경
+ ![Compartment](images/id-compartment.png " ")
+
+1. 화면 좌측 하단의 Compartment에서 위에서 생성한 **OCIDevOpsHandsOn**을 선택합니다.
+   //사진변경
+   ![Compartment Screen](images/compartmentScreen.png " ")
+
+1. **Start VCN Wizard**를 클릭합니다.
+
+1. **Create VCN with Internet Connectivity**를 선택 후 **Start VCN Wizard**를 클릭합니다.
+   //사진변경
+   ![Compartment Screen](images/compartmentScreen.png " ")
+
+1. 다음과 같이 입력:
+      - VCN Name: Enter **VCNforDevOpsHandsOn**
+      - VCN CIDR Block: 10.0.0.0/16 (기본값)
+      - Public Subnet CIDR Block: 10.0.0.0/24 (기본값)
+      - Private Subnet CIDR Block: 10.0.1.0/24 (기본값)
+      - **Next** 클릭
+   //사진변경
+   ![Compartment Screen](images/compartmentScreen.png " ")
+
+1. 입력된 정보를 확인한 후 하단의 **Create**를 클릭하여 VCN을 생성합니다
+   //사진변경
+   ![Compartment Screen](images/compartmentScreen.png " ")
+
+## Task 3: Compute Instance 생성 및 Instance Pool 설정 (Auto Scailing)
+
+1. 좌측 상단의 **햄버거 아이콘**을 클릭하고, **Compute**을 선택한 후 **Instances**를 클릭합니다.
+ //사진변경
+ ![Compartment](images/id-compartment.png " ")
+
+1. 화면 좌측 하단의 Compartment에서 Task 2에서 생성한 **OCIDevOpsHandsOn**을 선택합니다.
+   //사진변경
+   ![Compartment Screen](images/compartmentScreen.png " ")
+
+1. **Create instance**를 클릭합니다.
+
+1. **Create instance**를 클릭합니다.
+   //사진변경
+   ![Compartment Screen](images/compartmentScreen.png " ")
+
+1. 다음과 같이 입력:
       - Name: Enter **CloudNativeHandsOn**
       - Description: **클라우드 네이티브 실습 구획**
       - Parent Compartment: 부모 구획으로 기본 선택되는 root 구획 선택
@@ -49,7 +101,7 @@
 
   ![CloudNativeHandsOn Compartment](images/compartment-create-ko.png " ")
 
-## Task 2: OKE Kubernetes 클러스터 생성
+## Task 4: OKE Kubernetes 클러스터 생성
 
 1. **햄버거 메뉴**를 클릭한 후, **Developer Services**, **Kubernetes Clusters (OKE)**를 선택합니다.
 
@@ -83,7 +135,7 @@
 
 1. OKE 클러스터와 관련된 모든 리소스가 생성되는데, 일반적으로 대략 5-10정도 소요됩니다.
 
-## Task 4: OKE Kubernetes Cluster Cloud Shell 접속 구성
+## Task 5: OKE Kubernetes Cluster Cloud Shell 접속 구성
 
 1. 생성한 클러스터의 상세 페이지에서 **Access Cluster** 버튼을 선택합니다.
 
