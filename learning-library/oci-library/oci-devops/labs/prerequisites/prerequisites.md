@@ -66,9 +66,9 @@ GitHub 계정이 없는 경우
 
 1. 다음과 같이 입력:
       - VCN Name: Enter **VCNforDevOpsHandsOn**
-      - VCN CIDR Block: 10.0.0.0/16 (기본값)
-      - Public Subnet CIDR Block: 10.0.0.0/24 (기본값)
-      - Private Subnet CIDR Block: 10.0.1.0/24 (기본값)
+      - VCN CIDR Block: **10.0.0.0/16** (기본값)
+      - Public Subnet CIDR Block: **10.0.0.0/24** (기본값)
+      - Private Subnet CIDR Block: **10.0.1.0/24** (기본값)
       - **Next** 클릭
    //사진변경
    ![Compartment Screen](images/compartmentScreen.png " ")
