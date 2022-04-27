@@ -40,17 +40,24 @@ GitHub 계정이 없는 경우 실습 전 [GitHub](https://github.com) 에서 �
 
    ![Compartment](images/id-compartment.png " ")
 
-1. **Create Compartment**를 클릭합니다.
-
+2. **devops_handson** 구획을 클릭합니다.
    ![Compartment Screen](images/compartmentScreen.png " ")
+3. 다음과 같이 입력하여 개인별 구획을 먼저 생성합니다.
+   - Name: Enter **YoungHwan** [개인별 영문 이름 또는 이니셜]
+   - Description: **DevOps 실습을 위한 개인별 구획입니다.**
+   - Parent Compartment: **devops_handson**
+   - **Create Compartment** 클릭
 
-1. 다음과 같이 입력:
+   ![Compartment Screen](images/compartmentCreate-1.png " ")
+   ![Compartment Screen](images/compartmentCreate-2.png " ")
+4. 생성된 개인별 구획을 클릭하여 이동 후 다음과 같이 입력하여 실습 구획을 생성합니다:
       - Name: Enter **OCIDevOpsHandsOn**
-      - Description: **OCI DevOps 실습 구획**
-      - Parent Compartment: 부모 구획으로 기본 선택되는 root 구획 선택
+      - Description: **OCI DevOps 핸즈온을 위한 실습 구획입니다.**
+      - Parent Compartment: **YoungHwan** **_[전 단계에서 생성한 개인별 구획을 선택합니다]_**
       - **Create Compartment** 클릭
-  
-  ![OCIDevOpsHandsOn Compartment](images/compartment-create-ko.png " ")
+
+   ![Compartment Screen](images/compartmentCreate-3.png " ")
+   ![Compartment Screen](images/compartmentCreate-4.png " ")
 
 ### Virtual Cloud Network 생성
 
@@ -105,7 +112,7 @@ GitHub 계정이 없는 경우 실습 전 [GitHub](https://github.com) 에서 �
       - **Add Ingress Rules** 클릭
    ![VCN Screen](images/vcn_subnet-security-list-3.png " ")
 
-## Task 2 : Compute Instance 생성 및 Instance 기본 설정
+## Task 3 : Compute Instance 생성 및 Instance 기본 설정
 
 ### Instance 생성
 
@@ -237,25 +244,6 @@ GitHub 계정이 없는 경우 실습 전 [GitHub](https://github.com) 에서 �
       docker-init:
       Version:          0.19.0
       GitCommit:        de40ad0
-    ````
-5. 기타 설정
-   - sudo 명령어를 비밀번호 없이 사용할 수 있도록 설정 합니다.
-    ````shell
-      <copy>
-      sudo vi /etc/sudoers
-      
-      # 파일 하단에 아래 내용 추가
-      ocarun  ALL=(ALL)  NOPASSWD: ALL
-      </copy>
-    ````
-   - OS 재부팅시 자동으로 Docker 명령어 권한을 지정하도록 설정 합니다._???재부팅하면 안됨 ㅠㅠ_
-    ````shell
-      <copy>
-      sudo vi /etc/rc.local
-      
-      # 파일 하단에 아래 내용 추가
-      sudo chmod 777 /var/run/docker.sock
-      </copy>
     ````
 
 [다음 랩으로 이동](#next)

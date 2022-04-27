@@ -34,8 +34,23 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
    
    ![BuildPipeline Create #1](images/devops-buildpipeline-create-2.png " ")
 
+## Task 2: Container Registry Repository 생성 (개인 구획)
+1. 좌측 상단의 **햄버거 아이콘**을 클릭하고, **Developer Services**을 선택한 후 **Containers & Artifacts** 하위의 **Container Registry**를 클릭합니다.
+   ![Container Registry Menu](images/devops-container-registry.png " ")
+2. 좌측에 Compartment 선택 상자에서 개인별 구획 하위의 **OCIDevOpsHandsOn** 구획을 선택합니다.
+   ![Container Registry Create Repository #1](images/devops-container-registry-repository-create-1.png " ")
+> **Note**: Container Registry의 Repository Name은 테넌시의 모든 구획에서 유일해야 하며 동일한 이름으로 중복 생성이 불가합니다.
+**_만약 업로드하려는 Repository가 존재하지 않는 경우 자동으로 root 구획 하위에 Repository가 생성 됩니다_**.
 
-## Task 2: Build Stage 추가
+3. **Create repository** 버튼을 클릭하여 다음과 같이 입력하여 repository를 생성합니다
+   - Compartment : **OCIDevOpsHandsOn**
+   - Repository Name : **devops-handson-[개인 구분을 위한 이니셜]/spring-boot-docker**
+
+   ![Container Registry Create Repository #2](images/devops-container-registry-repository-create-2.png " ")
+   ![Container Registry Create Repository #3](images/devops-container-registry-repository-create-3.png " ")
+   ![Container Registry Create Repository #4](images/devops-container-registry-repository-create-4.png " ")
+
+## Task 3: Build Stage 추가
 
 1. 생성된 Build Pipeline에서 **Add Stage**를 클릭합니다.
    ![BuildPipeline Build Stage Create #1](images/devops-buildpipeline-create-3.png " ")
@@ -50,7 +65,7 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
    - Primary code repository : **Select** 클릭
 
    ![BuildPipeline Build Stage Create #3](images/devops-buildpipeline-create-5.png " ")
-   - **OCI Code Repository** 선택 후 **github_spring-boot-docker** 선택
+   - **OCI Code Repository** 선택 후 **spring-boot-docker** 선택
    - Select Branch : **main**
    - Build source name : **spring-boot-docker-source**
    - **Save** 클릭
@@ -60,7 +75,7 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
 
    ![BuildPipeline Build Stage Create #5](images/devops-buildpipeline-create-6.png " ")
 
-   1. buildSpec.yml 파일 예시
+   1. build_spec.yml 파일 예시
     ````yml
     version: 0.1
     component: build
@@ -69,6 +84,7 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
     env:
       variables:
         appName: "spring-boot-docker"
+        repoName: "devops-handson-yhcho"  #각자 경로에 맞게 수정이 필요합니다.
    
       exportedVariables:
         - APP_NAME
@@ -110,7 +126,7 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
        timeoutInSeconds: 30
        command: |
        TENANCY_NAMESPACE=`oci os ns get --query data --raw-output`
-       REPO_NAME=$appName
+       REPO_NAME=$repoName/$appName
        OCIR_PATH=$OCI_RESOURCE_PRINCIPAL_REGION.ocir.io/$TENANCY_NAMESPACE/$REPO_NAME
 
      - type: Command
@@ -169,25 +185,7 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
 
    ![BuildPipeline Deliver Artifact Stage Create #3](images/devops-buildpipeline-create-7-4.png " ")
 
-## Task 4: Build Pipeline 수동실행 및 결과 확인
-
-1. Build Pipeline 우측 상단의 **Manual Run**을 클릭하여 빌드 실행
-   ![BuildPipeline Manual Run #1](images/devops-buildpipeline-create-14-1.png " ")
-
-2. 좌측 하단  **Start manual run** 버튼을 클릭하여 수동 빌드 실행
-   ![BuildPipeline Manual Run #2](images/devops-buildpipeline-create-14.png " ")
-
-3. 빌드 실행 후 로그 확인
-   ![BuildPipeline Manual Run #3](images/devops-buildpipeline-create-15.png " ")
-
-4. 우측상단 더보기 버튼 클릭 후 **View Detail** 버튼을 클릭하여 빌드 실행 결과를 확인합니다.
-   ![BuildPipeline Manual Run #3](images/devops-buildpipeline-create-17.png " ")
-   ![BuildPipeline Manual Run #3](images/devops-buildpipeline-create-18.png " ")
-5. 빌드 결과가 Container Registry에 저장되었는지 확인 합니다. **_(Image는 root구획 하위에 업로드됩니다.)_**
-   ![BuildPipeline Manual Run #4](images/devops-buildpipeline-create-19.png " ")
-   ![BuildPipeline Manual Run #4](images/devops-buildpipeline-create-20.png " ")
-
-## Task 5: Trigger 생성
+## Task 4: Trigger 생성 및 빌드 실행 결과 확인
 
 1. DevOps 프로젝트 우측 메뉴에서 **Triggers** 를 클릭 후 **Create Trigger** 버튼을 클릭합니다.
    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-1.png " ")
@@ -196,10 +194,10 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
    - Name : **TriggerForSpringBootDocker**
    - Source connection : **OCI Code repository**
    - **Select** 클릭
-   
+
    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-1-1.png " ")
 
-3. **github_spring-boot-docker** 선택 후 **Save** 버튼을 클릭합니다.
+3. **spring-boot-docker** 선택 후 **Save** 버튼을 클릭합니다.
    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-1-2.png " ")
 
 4. **Add action** 버튼을 클릭합니다.
@@ -212,17 +210,48 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
 6. Event 의 **Push**를 선택 후 다음과 같이 입력합니다:
    - Source branch : **main**
    - **Save** 버튼을 클릭합니다.
-   
+
    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-2.png " ")
    - **Create** 버튼을 클릭하여 Trigger를 생성합니다.
-   
+
    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-3.png " ")
 
-7. 소스코드를 변경 후 변경된 내용을 Remote에 Commit & Push 합니다.
+7. Cloud Shell을 실행하여 아래 경로로 이동하여 소스코드의 메시지를 변경 후 저장합니다.
+      ````shell
+      <copy>
+      cd spring-boot-docker/src/main/java/hello
+      vi Application.java
+      </copy>
+      ````
    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-4.png " ")
-
-8. Push 후 Build가 Trigger 되었는지 확인합니다.
+8. 수정 후 아래 명령어를 입력하여 변경된 소스를 Commit & Push 합니다.
+      ````shell
+      <copy>
+      git add .
+      git commit -m "change message"
+      git push -u origin main
+      </copy>
+      ````
+   - UserName은 [Tenancy ID]/[User ID] 로 구성됩니다. (예시, dudghks34/oracleidentitycloudservice/dudghks34@gmail.com)
+   - Password는 생성한 Auth Token을 입력합니다
+9. Push 후 Build가 Trigger 되었는지 확인합니다.
    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-5.png " ")
+
+10. 빌드 실행 결과 확인 및 우측상단 더보기 버튼 클릭 후 **View Detail** 버튼을 클릭하여 빌드 실행 결과를 확인합니다.
+    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-6.png " ")
+    ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-7.png " ")
+   
+11. 빌드 결과가 Container Registry에 저장되었는지 확인 합니다.
+   ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-8.png " ")
+   ![BuildPipeline Manual Run #4](images/devops-buildpipeline-triggers-9.png " ")
+
+## Task 5:(Option) Build Pipeline 수동실행
+
+1. Build Pipeline 우측 상단의 **Manual Run**을 클릭하여 빌드 실행
+   ![BuildPipeline Manual Run #1](images/devops-buildpipeline-create-14-1.png " ")
+
+2. 좌측 하단  **Start manual run** 버튼을 클릭하여 수동 빌드 실행
+   ![BuildPipeline Manual Run #2](images/devops-buildpipeline-create-14.png " ")
 
 
 [다음 랩으로 이동](#next)

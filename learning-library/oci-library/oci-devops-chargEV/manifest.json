@@ -30,11 +30,7 @@
             "filename": "labs/lab-4/deploy-pipeline.md"
         },
         {
-            "title": "Jenkins(CI) + DevOps(CD) 사전준비",
-            "filename": "labs/jenkins-prerequisites/prerequisites.md"
-        },
-        {
-            "title": "Lab 5: Jenkins(CI) 와 DevOps(CD) 연동하기",
+            "title": "Lab 5: (Option) Jenkins(CI) 와 DevOps(CD) 연동하기",
             "filename": "labs/lab-5/jenkins-with-devops.md"
         }
     ]

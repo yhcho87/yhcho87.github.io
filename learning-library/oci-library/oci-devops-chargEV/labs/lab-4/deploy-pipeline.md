@@ -381,10 +381,4 @@ Instance Group이나 OKE(Oracle Kubernetes Engine), Funtions 과 같은 환경�
    ![DevOps Blud/Green Pipeline Test #1](images/devops-bdg-deploypipeline-test-14.png " ")
    ![DevOps Blud/Green Pipeline Test #1](images/devops-bdg-deploypipeline-test-15.png " ")
 
-## Task 6: (Option) Instance Group: Canary Strategy Deploy Stage 생성 및 반영 테스트
-1. 신규 이미지 생성 (카나리를 위한)
-2. 환경생성 (카나리용)
-3. Canary Strategy 스테이지 생성
-4. 테스트
-
 [다음 랩으로 이동](#next)

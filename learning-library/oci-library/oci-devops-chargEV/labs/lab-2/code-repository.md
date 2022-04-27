@@ -34,7 +34,7 @@ OCI 의 Private Code Repository를 생성하여 소스코드를 관리하고, �
    ![DevOps Code Repository #2](images/devops-coderepository-create-2.png " ")
 
 5. 다음과 같이 입력합니다:
-   - Repository name : **DemoCodeRepository**
+   - Repository name : **spring-boot-docker**
    - **Create Repository** 버튼을 클릭하여 Repository를 생성합니다.
    
    ![DevOps Code Repository #3](images/devops-coderepository-create-3.png " ")
@@ -67,11 +67,31 @@ OCI 의 Private Code Repository를 생성하여 소스코드를 관리하고, �
 3. OCI Console 우측 상단의 **Cloud Shell** 아이콘을 클릭하여 Cloud Shell을 실행 합니다
    ![DevOps Code Repository Demo #1](images/devops-coderepository-clone-1.png " ")
 
-4. [Task 1]에서 생성한 Code Repository 하단에서 Git Clone 명령어와 User Name을 확인합니다
-   ![DevOps Code Repository Demo #1](images/devops-coderepository-test-5.png " ")
+4. 아래 명령어를 이용하여 실습에 사용할 소스코드를 내려 받습니다.
+      ````shell
+      <copy>
+      git clone https://github.com/yhcho87/spring-boot-docker.git
+      </copy>
+      ````
+5. 내려받은 폴더로 이동하여 아래 명령어를 입력하여 기존 remote 정보 및 repository 정보를 삭제 합니다.
+      ````shell
+      <copy>
+      cd spring-boot-docker
+
+      git remote remove origin
+      rm -rf .git/
+      </copy>
+      ````
+6. 아래 명령어를 입력하여 repository를 초기화 합니다.
+      ````shell
+      <copy>
+      git init
+      </copy>
+      ````
+7. [Task 1]에서 생성한 Code Repository 하단에서 Git Clone 명령어의 URL과 User Name을 확인합니다
    ![DevOps Code Repository Demo #1](images/devops-coderepository-test-6.png " ")
 
-5. Cloud Shell 에서 아래 명령어를 입력하여 User Email, User Name을 설정합니다.
+8. Cloud Shell 에서 아래 명령어를 입력하여 User Email, User Name을 설정합니다.
    ![DevOps Code Repository Demo #1](images/devops-coderepository-test-10.png " ")
       ````shell
       <copy>
@@ -79,55 +99,38 @@ OCI 의 Private Code Repository를 생성하여 소스코드를 관리하고, �
       git config --global user.name "YoungHwan"
       </copy>
       ````
-
-6. Cloud Shell 에서 복사한 Clone 명령어와 아래 내용을 참조하여 Username/Password를 입력합니다
+9. OCI DevOps의 Code Repository의 URL을 새로운 remote로 등록합니다.
+   ![DevOps Code Repository Demo #1](images/devops-coderepository-test-5.png " ")
       ````shell
-      <copy>
-      git clone https://devops.scmservice.ap-seoul-1.oci.oraclecloud.com/namespaces/cnfdr2omjc2j/projects/DevOpsHandsOn/repositories/DemoCodeRepository
-      </copy>
+       <copy>
+       git remote add orgin [개인별 생성된 Repo URL 입력]
+       </copy>
       ````
-   - UserName은 [Tenancy ID]/[User ID] 로 구성됩니다. (예시, dudghks34/oracleidentitycloudservice/dudghks34@gmail.com)
-   - Password는 생성한 Auth Token을 입력합니다
-   ![DevOps Code Repository Demo #1](images/devops-coderepository-test-7.png " ")
-   - 정상 처리 완료시 아래와 같이 결과가 출력 됩니다.
+10. git pull 명령어와 아래 내용을 참조하여 Username/Password를 입력합니다
       ````shell
-      remote: Counting objects: 2, done
-      remote: Finding sources: 100% (2/2)
-      remote: Getting sizes: 100% (1/1)
-      remote: Total 2 (delta 0), reused 2 (delta 0)
-      Unpacking objects: 100% (2/2), 140 bytes | 140.00 KiB/s, done.
+       <copy>
+       git pull origin main
+       </copy>
       ````
+    - UserName은 [Tenancy ID]/[User ID] 로 구성됩니다. (예시, dudghks34/oracleidentitycloudservice/dudghks34@gmail.com)
+    - Password는 생성한 Auth Token을 입력합니다
+11. 아래 명령어를 입력하여 실습 코드를 Code Repository에 Push 합니다.
+      ````shell
+       <copy>
+       git branch -M main
+       git add .
+       git commit -m "First Commit"
+       git push -u origin main
+       </copy>
+      ````
+    - UserName은 [Tenancy ID]/[User ID] 로 구성됩니다. (예시, dudghks34/oracleidentitycloudservice/dudghks34@gmail.com)
+    - Password는 생성한 Auth Token을 입력합니다
 
-8. 자동으로 생성된 **[DemoCodeRepository]** 폴더로 이동하여 **[newFile.txt]** 파일을 생성합니다.
-   ![DevOps Code Repository Demo #1](images/devops-coderepository-test-8.png " ")
-   ![DevOps Code Repository Demo #1](images/devops-coderepository-test-9.png " ")
-   
-9. 파일 생성 후 아래 명령어를 차례로 입력하여 Repository 에 파일을 Push 합니다.
-   - UserName은 [Tenancy ID]/[User ID] 로 구성됩니다. (예시, dudghks34/oracleidentitycloudservice/dudghks34@gmail.com)
-   - Password는 생성한 Auth Token을 입력합니다
-   ![DevOps Code Repository Demo #1](images/devops-coderepository-test-11.png " ")
-   ````shell
-   git add .
-   git commit -m 'First Commit'
-   git push
-   ````
-   - 정상 처리 완료시 아래와 같이 결과가 출력 됩니다.
-   ````shell
-   Username for 'https://devops.scmservice.ap-seoul-1.oci.oraclecloud.com': dudghks34/oracleidentitycloudservice/dudghks34@gmail.com
-   Password for 'https://dudghks34/oracleidentitycloudservice/dudghks34@gmail.com@devops.scmservice.ap-seoul-1.oci.oraclecloud.com':
-   Enumerating objects: 4, done.
-   Counting objects: 100% (4/4), done.
-   Writing objects: 100% (3/3), 268 bytes | 268.00 KiB/s, done.
-   Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
-   To https://devops.scmservice.ap-seoul-1.oci.oraclecloud.com/namespaces/cnfdr2omjc2j/projects/DevOpsHandsOn/repositories/DemoCodeRepository
-   a6df401..5830bdf  main -> main
-   ````
-
-10. Push한 파일을 OCI Console에서 확인합니다.
+12. Push한 파일을 OCI Console에서 확인합니다.
     ![DevOps Code Repository Demo #1](images/devops-coderepository-test-12.png " ")
     ![DevOps Code Repository Demo #1](images/devops-coderepository-test-13.png " ")
 
-## Task 3: 외부 Repository Mirroring (GitHub)
+## Task 3:(Option) 외부 Repository Mirroring (GitHub)
 
 1. 외부 연결 생성을 위해 GitHub 사이트에서 PAT를 생성합니다.
    - 프로필 아이콘을 클릭하여 **[Settings]** 메뉴로 이동합니다
@@ -175,7 +178,7 @@ OCI 의 Private Code Repository를 생성하여 소스코드를 관리하고, �
    ![DevOps Mirror Repository](images/devops-coderepository-mirror-repo.png " ")
 
 9. 다음과 같이 입력하여 GitHub Repository를 Mirroring 합니다.
-   - Connection : **GitHub\__yhcho87_** [본인이 생성한 외부연결을 선택합니다]
+   - Connection : **GitHub\_yhcho87\_** [본인이 생성한 외부연결을 선택합니다]
    - Repository : **spring-boot-docker**
    - Name : **github_spring-boot-docker**
    - **Mirror repository**를 클릭하여 완료합니다
