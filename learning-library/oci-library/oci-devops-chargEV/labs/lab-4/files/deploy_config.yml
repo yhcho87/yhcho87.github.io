@@ -29,6 +29,7 @@ steps:
     timeoutInSeconds: 600
   - stepType: Command
     name: Run spring boot docker demo
-    command: docker run -d -p 8080:8080 -t ${OCIR_PATH}:${TAG}
+    command: |
+      docker run -d -p 8080:8080 -t ${OCIR_PATH}:${TAG}
     runAs: root
     timeoutInSeconds: 600

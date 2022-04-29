@@ -75,7 +75,7 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
 
    ![BuildPipeline Build Stage Create #5](images/devops-buildpipeline-create-6.png " ")
 
-   1. build_spec.yml 파일 예시
+4. build_spec.yml 파일 예시
     ````yml
     version: 0.1
     component: build
@@ -152,6 +152,21 @@ OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지
         type: DOCKER_IMAGE
         location: new-generated-image
    ````
+
+5. Cloud Shell을 이용하여 build_spec.yml 파일의 **repoName** 을 각자 경로에 맞게 수정합니다.
+   ![BuildPipeline Build Spec File Update #1](images/devops-buildpipeline-create-cloudshell-1.png " ")
+   ![BuildPipeline Build Spec File Update #2](images/devops-buildpipeline-create-cloudshell-2.png " ")
+
+6. 수정 후 아래 명령어를 이용하여 변경사항을 Commit & Push 합니다.
+      ````shell
+       <copy>
+       git add .
+       git commit -m "repoName change"
+       git push -u origin main
+       </copy>
+      ````
+   - UserName은 [Tenancy ID]/[User ID] 로 구성됩니다. (예시, dudghks34/oracleidentitycloudservice/dudghks34@gmail.com)
+   - Password는 생성한 Auth Token을 입력합니다
 
 ## Task 3: Deliver Artifacts Stage 추가
 

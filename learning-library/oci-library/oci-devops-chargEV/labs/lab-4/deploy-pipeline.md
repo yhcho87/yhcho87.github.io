@@ -119,6 +119,7 @@ Instance Group이나 OKE(Oracle Kubernetes Engine), Funtions 과 같은 환경�
    - Artifact source : **inline**
    - Config 내용 [파일 다운로드](./files/deploy_config.yml)
       ````yml
+        <copy>
         version: 1.0
         component: deployment
         runAs: root
@@ -139,20 +140,22 @@ Instance Group이나 OKE(Oracle Kubernetes Engine), Funtions 과 같은 환경�
           - stepType: Command
             name: Login to OCI Registry
             command: |
-            docker login -u ${REGISTRY_USERNAME} -p '${REGISTRY_TOKEN}' ${DOCKER_REGISTRY}
+              docker login -u ${REGISTRY_USERNAME} -p '${REGISTRY_TOKEN}' ${DOCKER_REGISTRY}
             runAs: root
             timeoutInSeconds: 600
           - stepType: Command
             name: pull Docker Image from OCI Registry
             command: |
-            docker pull ${OCIR_PATH}:${TAG}
+              docker pull ${OCIR_PATH}:${TAG}
             runAs: root
             timeoutInSeconds: 600
           - stepType: Command
             name: Run spring boot docker demo
-            command: docker run -d -p 8080:8080 -t ${OCIR_PATH}:${TAG}
+            command: |
+              docker run -d -p 8080:8080 -t ${OCIR_PATH}:${TAG}
             runAs: root
             timeoutInSeconds: 600
+        </copy>
       ````
    - **Add** 버튼을 클릭하여 Artifact를 추가합니다
 

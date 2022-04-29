@@ -107,7 +107,7 @@ GitHub 계정이 없는 경우 실습 전 [GitHub](https://github.com) 에서 �
       - Source Type : **CIDR** (기본값)
       - Source CIDR : Enter **0.0.0.0/0**
       - IP Protocol : **TCP** (기본값)
-      - Destination Port Range : **8080**
+      - Destination Port Range : **80, 8080**
       - Description : **for Demo Application**
       - **Add Ingress Rules** 클릭
    ![VCN Screen](images/vcn_subnet-security-list-3.png " ")
@@ -143,8 +143,20 @@ GitHub 계정이 없는 경우 실습 전 [GitHub](https://github.com) 에서 �
    - 이번 실습에서는 **Generate a key pair for me** 를 선택 후 Private Key, Public Key를 다운받아 잘 보관 합니다.
    - Boot volume 관련 옵션은 기본 설정을 유지 합니다.
    ![Compute Create #4](images/compute-create-4.png " ")
-
-7. **Create** 버튼을 클릭 후 생성
+7. Boot volume 옵션 하단에 **Show advanced options** 를 클릭하여 다음과 같이 입력합니다.
+   - Initialization script : **Paste cloud-init script**
+        ````shell
+         <copy>
+         #cloud-config
+         users:
+         - default
+         - name: ocarun
+           sudo: ALL=(ALL) NOPASSWD:ALL
+         </copy>
+        ````
+   ![Compute Create #4](images/compute-create-5-1.png " ")
+   ![Compute Create #4](images/compute-create-5-2.png " ")
+8. **Create** 버튼을 클릭 후 생성
    - 생성 후 Running 상태를 확인 합니다
    ![Compute Create #6](images/compute-create-6.png " ")
 
