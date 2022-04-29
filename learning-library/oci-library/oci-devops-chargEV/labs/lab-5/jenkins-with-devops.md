@@ -6,7 +6,7 @@ Jenkins CI Pipeline과 OCI DevOps CD Pipeline 환경을 연동하는 실습을 �
 
 ![Dashboard](images/devops-with-jenkins.png " ")
 
-소요시간: 20 minutes
+소요시간: 30 minutes
 
 ### 목표
 

@@ -5,7 +5,7 @@
 OCI Code Repository를 이용하여 소스코드를 관리하는 방법을 실습을 통해 학습니다.
 OCI 의 Private Code Repository를 생성하여 소스코드를 관리하고, 외부 SCM(GitHub,GitLab)으로 부터 레파지토리를 Clone하거나 Mirroring하는 방법을 학습합니다.
 
-소요시간: 20 minutes
+소요시간: 25 minutes
 
 ### 목표
 

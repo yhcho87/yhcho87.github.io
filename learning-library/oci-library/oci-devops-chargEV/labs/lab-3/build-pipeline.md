@@ -4,7 +4,7 @@
 
 OCI Build Pipeline을 구성하고 실습예제를 Build 하고 Docker 이미지를 생성하여 OCI Container Registry에 업로드하는 실습을 진행 합니다.
 
-소요시간: 20 minutes
+소요시간: 30 minutes
 
 ### 목표
 

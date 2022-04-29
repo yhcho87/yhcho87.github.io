@@ -6,7 +6,7 @@
 그리고 빌드된 결과물을 배포할 Compute Instance와 Load Balancer를 구성합니다.
 GitHub 계정이 없는 경우 실습 전 [GitHub](https://github.com) 에서 계정 생성 후 진행 부탁 드립니다. 
 
-소요시간: 20 minutes
+소요시간: 30 minutes
 
 ### 목표
 
