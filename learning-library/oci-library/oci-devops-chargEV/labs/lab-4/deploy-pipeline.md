@@ -32,7 +32,10 @@ Instance Group이나 OKE(Oracle Kubernetes Engine), Funtions 과 같은 환경�
 3. Pipeline 생성 완료
    ![DevOps DeploymentPipeline Create #3](images/devops-deploypipeline-create-3.png " ")
 4. Pipeline 상세보기 화면에서 Parameter Tab을 클릭 하여 다음과 같이 파라미터를 추가 합니다.
-   - REGISTRY_USERNAME : **cnfdr2omjc2j/oracleidentitycloudservice/dudghks34@gmail.com** [tenancy명]/[사용자ID] 입력합니다.
+   - Tenancy Object Storage Namespace 확인
+     ![DevOps DeploymentPipeline Create #4](images/devops-deploypipeline-create-4-1.png " ")
+     ![DevOps DeploymentPipeline Create #4](images/devops-deploypipeline-create-4-2.png " ")
+   - REGISTRY_USERNAME : **cnfdr2omjc2j/oracleidentitycloudservice/dudghks34@gmail.com** [tenancy object storage namespace]/[사용자ID] 입력합니다.
    - REGISTRY_TOKEN : 앞서 생성한 Auth Token 값을 입력합니다.
    - DOCKER_REGISTRY : **ap-seoul-1.ocir.io**
    
