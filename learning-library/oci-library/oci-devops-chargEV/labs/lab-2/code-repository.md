@@ -103,7 +103,7 @@ OCI 의 Private Code Repository를 생성하여 소스코드를 관리하고, �
    ![DevOps Code Repository Demo #1](images/devops-coderepository-test-5.png " ")
       ````shell
        <copy>
-       git remote add orgin [개인별 생성된 Repo URL 입력]
+       git remote add origin [개인별 생성된 Repo URL 입력]
        </copy>
       ````
 10. git pull 명령어와 아래 내용을 참조하여 Username/Password를 입력합니다
