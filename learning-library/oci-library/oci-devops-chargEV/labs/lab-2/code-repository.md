@@ -91,20 +91,23 @@ OCI 의 Private Code Repository를 생성하여 소스코드를 관리하고, �
 7. [Task 1]에서 생성한 Code Repository 하단에서 Git Clone 명령어의 URL과 User Name을 확인합니다
    ![DevOps Code Repository Demo #1](images/devops-coderepository-test-6.png " ")
 
-8. Cloud Shell 에서 아래 명령어를 입력하여 User Email, User Name을 설정합니다.
-   ![DevOps Code Repository Demo #1](images/devops-coderepository-test-10.png " ")
-      ````shell
-      <copy>
-      git config --global user.email "dudghks34@gmail.com"
-      git config --global user.name "YoungHwan"
-      </copy>
-      ````
-9. OCI DevOps의 Code Repository의 URL을 새로운 remote로 등록합니다.
+8. OCI DevOps의 Code Repository의 URL을 새로운 remote로 등록합니다.
    ![DevOps Code Repository Demo #1](images/devops-coderepository-test-5.png " ")
       ````shell
        <copy>
        git remote add origin [개인별 생성된 Repo URL 입력]
        </copy>
+      ````
+
+9. Cloud Shell 에서 아래 명령어를 입력하여 User Email, User Name을 설정합니다.
+   ![DevOps Code Repository Demo #1](images/devops-coderepository-test-10.png " ")
+      ````shell
+      <copy>
+      git config --global user.email "[개인이메일]"
+      git config --global user.email "dudghks34@gmail.com"
+      git config --global user.name "[식별을 위한 이름]"
+      git config --global user.name "YoungHwan"
+      </copy>
       ````
 10. git pull 명령어와 아래 내용을 참조하여 Username/Password를 입력합니다
       ````shell
