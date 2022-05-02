@@ -28,7 +28,7 @@
    ![Notifications Screen](images/notification-create-2.png " ")
 
 1. 다음과 같이 입력:
-   - Name: Enter **TopicForDevOps**
+   - Name: Enter **TopicForDevOps\__[개인이니셜]_**
    - **Create** 클릭
    ![Notifications create](images/notification-create-3.png " ")
 
@@ -44,7 +44,7 @@
    ![OCI DevOps Screen](images/devops-create-2.png " ")
 
 1. 다음과 같이 입력:
-   - Name : DevOpsHandsOn
+   - Name : **DevOpsHandsOn\__[개인이니셜]_**
    - **Select Topic** 클릭 후 앞서 생성한 Topic을 선택합니다.
    - **Create DevOps project** 클릭하여 Project를 생성합니다.
    ![OCI DevOps Create #1](images/devops-create-5.png " ")
